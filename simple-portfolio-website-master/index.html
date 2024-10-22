@@ -94,28 +94,68 @@
         </section>
 
 
-        <!-- SECTION NO 3 -->
-        <section class="container-fluid section-3">
-            <div class="row section-3-inner">
-                <div class="col-lg-6 section-3-inner-col-left text-center">
-                    <div class="primary-heading section-3-heading text-lg-end">
-                        I Am <span class="fw-bold">Designer</span>
-                    </div>
-                    <div class="section-3-image-left text-lg-end">
-                        <img src="./images/Section-3-image-1.jpg" class="img-fluid sec3-images sec3-img-left" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-6 section-3-inner-col-right text-center mt-5 mt-lg-0">
-                    <div class="section-3-image-right text-lg-start">
-                        <img src="./images/Section-3-image-2.jpg" class="img-fluid sec3-images sec3-img-right" alt="">
-                    </div>
-                    <div class="section-3-button-right text-lg-start">
-                        <button class="sec3-btn-right text-uppercase fw-bold" onclick="location.href='#'">
-                            Read More
-                        </button>
-                    </div>
-                </div>
+       <!-- SECTION NO 3 -->
+<section class="container-fluid section-3">
+    <div class="row section-3-inner">
+        <div class="col-lg-6 section-3-inner-col-left text-center">
+            <div class="primary-heading section-3-heading text-lg-end">
+                I Am <span class="fw-bold">Designer</span>
             </div>
+            <div class="section-3-image-left text-lg-end">
+                <img src="./images/Section-3-image-1.jpg" class="img-fluid sec3-images sec3-img-left" alt="">
+            </div>
+        </div>
+        <div class="col-lg-6 section-3-inner-col-right text-center mt-5 mt-lg-0">
+            <div class="section-3-image-right text-lg-start">
+                <img src="./images/Section-3-image-2.jpg" class="img-fluid sec3-images sec3-img-right" alt="">
+            </div>
+            <div class="section-3-button-right text-lg-start">
+                <button class="sec3-btn-right text-uppercase fw-bold" onclick="location.href='#'">
+                    Read More
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const options = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.1 // Adjust as needed
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add classes to trigger animation
+                    const leftImage = entry.target.querySelector('.sec3-img-left');
+                    const rightImage = entry.target.querySelector('.sec3-img-right');
+
+                    if (leftImage) {
+                        leftImage.classList.add('slide-in-left'); // Add your CSS animation class
+                        leftImage.style.opacity = '1'; // Make it visible
+                    }
+                    if (rightImage) {
+                        rightImage.classList.add('slide-in-right'); // Add your CSS animation class
+                        rightImage.style.opacity = '1'; // Make it visible
+                    }
+
+                    // Stop observing once the animations have been triggered
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, options);
+
+        // Observe the section containing the images
+        const section3 = document.querySelector('.section-3-inner');
+        if (section3) {
+            observer.observe(section3);
+        }
+    });
+</script>
+
             <div class="background-section-3"></div>
         </section>
 
